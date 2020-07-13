@@ -1,6 +1,6 @@
 #include "pixled_driver.hpp"
 #include "pixled/api/output.h"
-#include "pixled/api/led.h"
+#include "pixled/api/pixel.h"
 
 namespace pixled {
 	class EspOutput : public api::Output {

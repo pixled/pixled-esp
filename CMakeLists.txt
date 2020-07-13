@@ -7,10 +7,22 @@ if(PIXLED_ESP_TEST)
 
 	message("Building pixled-esp standalone tests.")
 
-	set(EXTRA_COMPONENT_DIRS test /home/pbreugno/Development/esp/components)
+	set(EXTRA_COMPONENT_DIRS test)
 
 	include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 
+	if(NOT EXISTS ${PIXLED_LIB_PATH})
+		message(FATAL_ERROR "Please specify the pixled-lib component path with
+		-DPIXLED_LIB_PATH=<path>")
+	else()
+		idf_build_component(${PIXLED_LIB_PATH})
+	endif()
+	if(NOT EXISTS ${PIXLED_DRIVER_PATH})
+		message(FATAL_ERROR "Please specify the esp-pixled-driver component path with
+		-DPIXLED_DRIVER_PATH=<path>")
+	else()
+		idf_build_component(${PIXLED_DRIVER_PATH})
+	endif()
 	project(pixled-esp-test CPP)
 
 	set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
