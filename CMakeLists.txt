@@ -24,11 +24,11 @@ if(PIXLED_ESP_TEST)
 		idf_build_component(${PIXLED_DRIVER_PATH})
 	endif()
 	project(pixled-esp-test CPP)
-
-	set(CMAKE_EXPORT_COMPILE_COMMANDS YES)
 else()
-	idf_component_register(
-		SRCS "pixled_esp.cpp"
-		INCLUDE_DIRS "."
-		REQUIRES pixled-lib esp-pixled-driver)
+	if(ESP_PLATFORM)
+		idf_component_register(
+			SRCS "pixled_esp.cpp"
+			INCLUDE_DIRS "."
+			REQUIRES pixled-lib esp-pixled-driver)
+	endif()
 endif()

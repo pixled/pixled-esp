@@ -1,6 +1,8 @@
+#ifndef PIXLED_ESP_HPP
+#define PIXLED_ESP_HPP
+
 #include "pixled_driver.hpp"
-#include "pixled/api/output.h"
-#include "pixled/api/pixel.h"
+#include "pixled.h"
 
 namespace pixled {
 	class EspOutput : public api::Output {
@@ -13,3 +15,4 @@ namespace pixled {
 
 	};
 }
+#endif

@@ -1,7 +1,6 @@
 #include "test_esp_output.hpp"
 #include "unity.h"
 #include "pixled_esp.hpp"
-#include "pixled/pixel.h"
 
 void test_esp_output() {
 	pixled::RgbStrip strip(GPIO_NUM_0, 2, {RGB, WS2812_T0H, WS2812_T0L, WS2812_T1H, WS2812_T1L});
