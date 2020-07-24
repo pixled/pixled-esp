@@ -17,12 +17,14 @@ This guides assumes that you have already set up your
 environment. Moreover you must know how to build an ESP-IDF project and install an
 ESP-IDF component.
 
-Basically, to install a component, you can add a `component` folder into the
+As a reminder, to install a component, you can add a `component` folder into the
 `$IDF_PATH/components` folder to make it available to any component in any
 project, add it locally to your project in your `components` sub-directory or
 eventually store it in any custom directory and manually add it to your build
 using the `EXTRA_COMPONENT_DIRS` [ESP-IDF project
 variable](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html#optional-project-variables).
+(see the ESP-IDF documentation for more information on [component management
+](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/build-system.html#component-requirements))
 
 **In any case**, the following 3 ESP-IDF components must be available from your
 current project :
