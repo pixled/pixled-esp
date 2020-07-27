@@ -17,6 +17,17 @@ This guides assumes that you have already set up your
 environment. Moreover you must know how to build an ESP-IDF project and install an
 ESP-IDF component.
 
+## Important note
+> `pixled-esp` requires ESP-IDF version **4.1 or above**.
+> Even if the `latest` ESP-IDF version is supposed to work, its instability has led to unexpected results,
+> so we recommend to use a release / prelease version.
+> More particularly, the [esp-idf
+> release-v4.2](https://docs.espressif.com/projects/esp-idf/en/release-v4.2/esp32/index.html)
+> has been used to test the library. See the corresponding [ESP-IDF
+> documentation](https://docs.espressif.com/projects/esp-idf/en/release-v4.2/esp32/get-started/index.html)
+> to install this version.
+
+
 As a reminder, to install a component, you can add a `component` folder into the
 `$IDF_PATH/components` folder to make it available to any component in any
 project, add it locally to your project in your `components` sub-directory or
