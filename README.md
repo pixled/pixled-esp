@@ -76,34 +76,27 @@ A minimal working `main.cpp` is provided here :
 
 #define PIN GPIO_NUM_12
 #define NUM_LED 30 
+#define FPS 25
 
 // Brings all pixled classes into scope (recommended)
 using namespace pixled;
 
+// Defines an RGB strip
+RgbStrip strip(PIN, NUM_LED, RMT_CHANNEL_0, WS2812());
+
+// Binds animation output to the strip
+EspOutput out(strip);
+
+// Defines a simple strip mapping
+StripMapping mapping(NUM_LED);
+
+// Sample animation
+hsb animation = hsb(RainbowWave(5, 0, 10), 1., .5);
+
+// Outputs `animation` frames to `out` using `mapping`
+EspRuntime runtime(mapping, out, animation, strip, FPS);
+
 extern "C" void app_main() {
-	// Defines an RGB strip
-	RgbStrip strip(PIN, NUM_LED, RMT_CHANNEL_0, WS2812());
-
-	// Binds animation output to the strip
-	EspOutput out(strip);
-
-	// Defines a simple strip mapping
-	StripMapping mapping(NUM_LED);
-
-	// Sample animation
-	auto animation = hsb(RainbowWave(5, 0, 10), 1., .5);
-
-	// Outputs `animation` frames to `out` using `mapping`
-	Runtime runtime(mapping, out, animation);
-
-	// TODO : improve this.
-	while(1) {
-		// Computes next frame
-		runtime.next();
-		// Transmit data to leds
-		strip.show();
-
-		vTaskDelay(50 / portTICK_PERIOD_MS);
-	}
+	runtime.start();
 }
 ```
